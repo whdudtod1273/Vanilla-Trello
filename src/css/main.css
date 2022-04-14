@@ -1,0 +1,23 @@
+* { padding: 0; margin: 0; box-sizing: border-box;}
+ol,ul,li { list-style: none; }
+a { text-decoration: none; }
+img {vertical-align: middle;}
+.cb::after {content: ""; display: block; clear: both;}
+input{border: none;outline: none;}
+button{border: none;background: transparent;}
+body{font-family: 'Noto Sans KR', sans-serif;}
+
+header {width: 100%;height: 44px;background-color: #026AA7;display: flex;justify-content: center}
+header .logo {color: #80B4D3;font-size: 20px;line-height: 44px;}
+
+main {width: 100%;height: calc(100vh - 44px);background-color: #0077C3;padding: 20px 30px;display: flex;flex-direction: column;}
+main .mainTitle{font-weight: 700;font-size: 30px;line-height: 35px;color: #fff;padding-bottom: 30px;}
+main .boardArea{overflow-x: auto; height: 100%;white-space: nowrap;user-select:none;font-size: 0;}
+main .boardArea .addBtn{display: inline-block; width: 200px;height: 40px;padding-left: 16px;font-weight: 400;font-size: 14px;line-height: 40px;background: rgba(255, 255, 255, 0.3);border-radius: 3px;color: #fff;vertical-align: top;white-space: nowrap;cursor: pointer;}
+main .boardArea .boardWrapper{display: inline-block;white-space: nowrap; width: 200px;height: 100%; font-weight: 400;font-size: 14px;line-height: 24px;background: transparent;border-radius: 3px;color: #fff;margin-right: 8px;}
+main .boardArea .boardWrapper .boardBox{width: 100%;background-color: #E3E4E6;border-radius: 5px;display: flex;flex-direction: column;max-height:100%}
+main .boardArea .boardWrapper .boardBox .todoTitle{color: #40506C;text-align: center;padding: 10px 8px;flex: 0 0 auto;}
+main .boardArea .boardWrapper .boardBox .todoWrapper{padding: 0 10px;flex: 1 1 auto;overflow-y: auto;}
+main .boardArea .boardWrapper .boardBox .todoWrapper .todoBox{background-color: #fff;padding: 6px 8px;box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);border-radius: 4px;margin-bottom: 10px;min-height: 0;overflow-y: auto;}
+main .boardArea .boardWrapper .boardBox .todoWrapper .todoBox p{font-weight: 400;font-size: 16px;color: #1E1E1E;white-space:normal}
+main .boardArea .boardWrapper .boardBox .todoAddBtn{font-weight: 400;font-size: 14px;color: #666;text-align: center;margin: 0 auto;padding: 10px 0;cursor: pointer;}

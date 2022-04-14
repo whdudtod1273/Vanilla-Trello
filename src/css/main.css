@@ -13,7 +13,8 @@ header .logo {color: #80B4D3;font-size: 20px;line-height: 44px;}
 main {width: 100%;height: calc(100vh - 44px);background-color: #0077C3;padding: 20px 30px;display: flex;flex-direction: column;}
 main .mainTitle{font-weight: 700;font-size: 30px;line-height: 35px;color: #fff;padding-bottom: 30px;}
 main .boardArea{overflow-x: auto; height: 100%;white-space: nowrap;user-select:none;font-size: 0;}
-main .boardArea .addBtn{display: inline-block; width: 200px;height: 40px;padding-left: 16px;font-weight: 400;font-size: 14px;line-height: 40px;background: rgba(255, 255, 255, 0.3);border-radius: 3px;color: #fff;vertical-align: top;white-space: nowrap;cursor: pointer;}
+main .boardArea .boardContainer{display:inline-block}
+main .addBoardBtn{display: inline-block; width: 200px;height: 40px;padding-left: 16px;font-weight: 400;font-size: 14px;line-height: 40px;background: rgba(255, 255, 255, 0.3);border-radius: 3px;color: #fff;vertical-align: top;white-space: nowrap;cursor: pointer;}
 main .boardArea .boardWrapper{display: inline-block;white-space: nowrap; width: 200px;height: 100%; font-weight: 400;font-size: 14px;line-height: 24px;background: transparent;border-radius: 3px;color: #fff;margin-right: 8px;}
 main .boardArea .boardWrapper .boardBox{width: 100%;background-color: #E3E4E6;border-radius: 5px;display: flex;flex-direction: column;max-height:100%}
 main .boardArea .boardWrapper .boardBox .todoTitle{color: #40506C;text-align: center;padding: 10px 8px;flex: 0 0 auto;}

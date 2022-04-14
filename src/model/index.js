@@ -1,7 +1,6 @@
 export default class Model {
   constructor() {
     if (!this.getData()) {
-      console.log("model");
       localStorage.setItem("boards", "[]");
     }
   }
@@ -11,9 +10,20 @@ export default class Model {
     return getData;
   }
 
-  setData(data, key = "boards") {
+  setBoardData(data, key = "boards") {
     const setData = JSON.stringify([...this.getData(), data]);
     localStorage.setItem(key, setData);
+  }
+
+  setTodoData(todo, id) {
+    const todoList = this.getData().map((item, index) => {
+      if (item.id === Number(id)) {
+        item.todos = [...item.todos, todo];
+      }
+      return item;
+    });
+    const setData = JSON.stringify(todoList);
+    localStorage.setItem("boards", setData);
   }
 
   removeData(data, key = "boards") {

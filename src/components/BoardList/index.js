@@ -5,10 +5,7 @@ export default class BoardList {
   constructor({ onRemove }, boardItem = new BoardItem()) {
     this.boardItem = boardItem;
     this.onRemove = onRemove;
-    this.event();
   }
-
-  event() {}
 
   templete(data = []) {
     return data.map((item, index) => this.boardItem.templete(item)).join("");

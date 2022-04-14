@@ -22,7 +22,7 @@ export default class Controller {
     onClick(this.addBarodButton, (e) => {
       const title = prompt("추가할 Board를 입력하세요.", "내용");
       if (title) {
-        this.model.setData({ id: createId(this.nowDate), title, todos: [] }, "boards");
+        this.model.setBoardData({ id: createId(this.nowDate), title, todos: [] }, "boards");
       }
       this.render();
     });
@@ -32,7 +32,11 @@ export default class Controller {
     onClick(document, (e) => {
       if (e.target.classList.contains("todoAddBtn")) {
         const content = prompt("추가할 Todo를 입력해주세요.", "내용");
-        console.log(e.target.parentNode.parentNode.dataset.id);
+        if (content) {
+          const todo = { id: createId(this.nowDate), content };
+          this.model.setTodoData(todo, e.target.parentNode.parentNode.dataset.id);
+          this.render();
+        }
       }
     });
   }

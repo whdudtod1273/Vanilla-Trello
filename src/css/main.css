@@ -13,12 +13,15 @@ header .logo {color: #80B4D3;font-size: 20px;line-height: 44px;}
 main {width: 100%;height: calc(100vh - 44px);background-color: #0077C3;padding: 20px 30px;display: flex;flex-direction: column;}
 main .mainTitle{font-weight: 700;font-size: 30px;line-height: 35px;color: #fff;padding-bottom: 30px;}
 main .boardArea{overflow-x: auto; height: 100%;white-space: nowrap;user-select:none;font-size: 0;}
-main .boardArea .boardContainer{display:inline-block}
+main .boardArea .boardContainer{display:inline-block;height: 100%;}
 main .addBoardBtn{display: inline-block; width: 200px;height: 40px;padding-left: 16px;font-weight: 400;font-size: 14px;line-height: 40px;background: rgba(255, 255, 255, 0.3);border-radius: 3px;color: #fff;vertical-align: top;white-space: nowrap;cursor: pointer;}
 main .boardArea .boardWrapper{display: inline-block;white-space: nowrap; width: 200px;height: 100%; font-weight: 400;font-size: 14px;line-height: 24px;background: transparent;border-radius: 3px;color: #fff;margin-right: 8px;}
-main .boardArea .boardWrapper .boardBox{width: 100%;background-color: #E3E4E6;border-radius: 5px;display: flex;flex-direction: column;max-height:100%}
-main .boardArea .boardWrapper .boardBox .todoTitle{color: #40506C;text-align: center;padding: 10px 8px;flex: 0 0 auto;}
+main .boardArea .boardWrapper .boardBox{width: 100%;background-color: #E3E4E6;border-radius: 5px;display: flex;flex-direction: column;max-height:100%;position: relative;}
+main .boardArea .boardWrapper .boardBox .todoTitle{color: #40506C;text-align: center;padding: 10px 20px;flex: 0 0 auto;font-size: 15px;position: relative;cursor: pointer;}
+main .boardArea .boardWrapper .boardBox .boardDeleteBtn{position: absolute;line-height: 1;top: 15px;right: 10px;font-size: 12px;cursor: pointer;color: #000;z-index: 1;}
 main .boardArea .boardWrapper .boardBox .todoWrapper{padding: 0 10px;flex: 1 1 auto;overflow-y: auto;}
-main .boardArea .boardWrapper .boardBox .todoWrapper .todoBox{background-color: #fff;padding: 6px 8px;box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);border-radius: 4px;margin-bottom: 8px;min-height: 0;overflow-y: auto;}
-main .boardArea .boardWrapper .boardBox .todoWrapper .todoBox p{font-weight: 400;font-size: 16px;color: #1E1E1E;white-space:normal}
+main .boardArea .boardWrapper .boardBox .todoWrapper .todoBox{background-color: #fff;box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);border-radius: 4px;margin-bottom: 8px;min-height: 0;overflow-y: auto;position: relative;transition: all .3s;cursor: pointer;}
+main .boardArea .boardWrapper .boardBox .todoWrapper .todoBox p:hover{background-color: #dedede;color: #666}
+main .boardArea .boardWrapper .boardBox .todoWrapper .todoBox p{font-weight: 400;font-size: 13px;color: #1E1E1E;white-space:normal;padding: 6px 8px;transition: all .3s;}
+main .boardArea .boardWrapper .boardBox .todoWrapper .todoBox .todoDeleteBtn{position: absolute;right: 5px;top: 5px;line-height: 1;font-size: 11px;color: rgba(255, 73, 27);cursor: pointer;z-index: 9;}
 main .boardArea .boardWrapper .boardBox .todoAddBtn{font-weight: 400;font-size: 14px;color: #666;text-align: center;margin: 0 auto;padding: 10px 0;cursor: pointer;}

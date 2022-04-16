@@ -5,7 +5,7 @@ export default class TodoList {
     this.todoItem = todoItem;
   }
 
-  templete(data = []) {
-    return data.map((item, index) => this.todoItem.templete(item));
+  templete(data = [], boardId) {
+    return data.map((item) => this.todoItem.templete(item, boardId));
   }
 }

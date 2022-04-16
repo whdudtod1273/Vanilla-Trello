@@ -1,3 +1,5 @@
+const date = new Date();
+
 export const $ = (selector) => {
   if (selector.split("")[0] === ".") {
     return document.querySelector(selector);
@@ -12,7 +14,7 @@ export const onClick = (target, handler) => {
   target.addEventListener("click", handler);
 };
 
-export const createId = (date) => {
+export const createId = () => {
   const idDate =
     `${date.getFullYear()}` +
     `${date.getMonth() + 1}` +

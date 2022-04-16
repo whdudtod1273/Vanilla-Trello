@@ -3,14 +3,21 @@ import { $, createId, onClick } from "../helpers/index.js";
 export default class Controller {
   constructor(model) {
     this.model = model;
-    this.nowDate = new Date();
+    this.BoardList = new BoardList();
 
-    this.addBarodButton = $(".addBoardBtn");
+    this.addBarodBtn = $(".addBoardBtn");
     this.boardContainer = $(".boardContainer");
+    this.deleteBoardBtn = $(".boardDeleteBtn");
+    this.deletetodoBtn = $(".todoDeleteBtn");
+    this.todoTitle = $(".todoTitle");
+    this.todoBox = $(".todoBox");
 
-    this.boardList();
     this.addBoard();
     this.addTodo();
+    this.deleteBoard();
+    this.deleteTodo();
+    this.editBoardData();
+    this.editTodoData();
     this.render();
   }
 
@@ -19,10 +26,37 @@ export default class Controller {
   }
 
   addBoard() {
-    onClick(this.addBarodButton, (e) => {
+    onClick(this.addBarodBtn, (e) => {
       const title = prompt("추가할 Board를 입력하세요.", "내용");
+      if (title.length > 20) {
+        alert("Board 글자수가 20자를 넘어가면 안됩니다.");
+        return;
+      }
       if (title) {
-        this.model.setBoardData({ id: createId(this.nowDate), title, todos: [] }, "boards");
+        this.model.setBoardData({ id: createId(), title, todos: [] }, "boards");
+      }
+      this.render();
+    });
+  }
+
+  deleteBoard() {
+    onClick(document, (e) => {
+      if (e.target.classList.contains("boardDeleteBtn")) {
+        this.model.deleteBoardData(e.target.dataset.id);
+      }
+      this.render();
+    });
+  }
+
+  editBoardData() {
+    onClick(document, (e) => {
+      if (e.target.classList.contains("todoTitle")) {
+        const text = e.target.innerText;
+        const title = prompt("수정할 내용을 입력해주세요.", `${text}`);
+        const id = e.target.dataset.id;
+        if (title) {
+          this.model.editBoardData(title, id);
+        }
       }
       this.render();
     });
@@ -41,15 +75,30 @@ export default class Controller {
     });
   }
 
-  boardList() {
-    this.BoardList = new BoardList({
-      onRemove: (id) => {
-        const removeData = this.model.getData().filter((item) => {
-          return item.id !== Number(id);
-        });
-        this.removeData(removeData);
-      },
+  deleteTodo() {
+    onClick(document, (e) => {
+      if (e.target.classList.contains("todoDeleteBtn")) {
+        const boardId = e.target.dataset.boardId;
+        const id = e.target.dataset.id;
+        this.model.deleteTodoData(boardId, id);
+      }
+      this.render();
     });
-    return this.BoardList;
+  }
+
+  editTodoData() {
+    onClick(document, (e) => {
+      if (e.target.classList.contains("todoContent")) {
+        const text = e.target.innerText;
+        const content = prompt("수정할 내용을 입력해주세요.", `${text}`);
+        const boardId = e.target.dataset.boardId;
+        const id = e.target.dataset.id;
+
+        if (content) {
+          this.model.editTodoData(content, boardId, id);
+        }
+      }
+      this.render();
+    });
   }
 }

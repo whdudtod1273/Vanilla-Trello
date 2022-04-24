@@ -14,6 +14,10 @@ export const onClick = (target, handler) => {
   target.addEventListener("click", handler);
 };
 
+export const onSubmit = (target, handler) => {
+  target.addEventListener("submit", handler);
+};
+
 export const createId = () => {
   const idDate =
     `${date.getFullYear()}` +

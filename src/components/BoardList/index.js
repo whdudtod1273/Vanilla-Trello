@@ -2,8 +2,8 @@ import BoardItem from "../BoardItem/index.js";
 import { onClick } from "../../helpers/index.js";
 
 export default class BoardList {
-  constructor(boardItem = new BoardItem()) {
-    this.boardItem = boardItem;
+  constructor() {
+    this.boardItem = new BoardItem();
   }
 
   templete(data = []) {

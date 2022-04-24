@@ -1,5 +1,5 @@
 import BoardList from "../components/BoardList/index.js";
-import { $, createId, onClick } from "../helpers/index.js";
+import { $, createId, onClick, onSubmit } from "../helpers/index.js";
 export default class Controller {
   constructor(model) {
     this.model = model;
@@ -43,22 +43,26 @@ export default class Controller {
     onClick(document, (e) => {
       if (e.target.classList.contains("boardDeleteBtn")) {
         this.model.deleteBoardData(e.target.dataset.id);
+        this.render();
       }
-      this.render();
     });
   }
 
   editBoardData() {
     onClick(document, (e) => {
       if (e.target.classList.contains("todoTitle")) {
-        const text = e.target.innerText;
-        const title = prompt("수정할 내용을 입력해주세요.", `${text}`);
-        const id = e.target.dataset.id;
-        if (title) {
+        onSubmit(e.target.parentNode.parentNode.children[1], (e) => {
+          e.preventDefault();
+          const title = e.target.children[0].value;
+          const id = e.target.children[0].dataset.id;
+
+          e.target.classList.remove("on");
+          e.target.parentNode.children[0].classList.remove("off");
+
           this.model.editBoardData(title, id);
-        }
+          this.render();
+        });
       }
-      this.render();
     });
   }
 
@@ -81,8 +85,8 @@ export default class Controller {
         const boardId = e.target.dataset.boardId;
         const id = e.target.dataset.id;
         this.model.deleteTodoData(boardId, id);
+        this.render();
       }
-      this.render();
     });
   }
 
@@ -97,8 +101,8 @@ export default class Controller {
         if (content) {
           this.model.editTodoData(content, boardId, id);
         }
+        this.render();
       }
-      this.render();
     });
   }
 }

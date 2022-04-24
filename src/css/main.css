@@ -14,7 +14,14 @@ main {width: 100%;height: calc(100vh - 44px);background-color: #0077C3;padding: 
 main .mainTitle{font-weight: 700;font-size: 30px;line-height: 35px;color: #fff;padding-bottom: 30px;}
 main .boardArea{overflow-x: auto; height: 100%;white-space: nowrap;user-select:none;font-size: 0;}
 main .boardArea .boardContainer{height: 100%;display: inline-block;}
-main .addBoardBtn{display: inline-block; width: 200px;height: 40px;padding-left: 16px;font-weight: 400;font-size: 14px;line-height: 40px;background: rgba(255, 255, 255, 0.3);border-radius: 3px;color: #fff;vertical-align: top;white-space: nowrap;cursor: pointer;}
+main .addBoardBtn{width: 200px;height: 40px;padding-left: 16px;font-weight: 400;font-size: 14px;line-height: 40px;background: rgba(255, 255, 255, 0.3);border-radius: 3px;color: #fff;vertical-align: top;white-space: nowrap;cursor: pointer;display: none;}
+main .addBoardBtn.on{display: inline-block;}
+main .addBoardInputWrapper{width: 200px;font-weight: 400;font-size: 14px;background: rgba(255, 255, 255, 0.3);border-radius: 3px;color: #fff;vertical-align: top;white-space: nowrap;cursor: pointer;padding: 4px;background-color: #ebecf0;display: none;}
+main .addBoardInputWrapper.on{display: inline-block;}
+main .addBoardInputWrapper .addBoardInput{width: 100%;height: 100%;display: inline-block;border-radius: 3px;padding: 5px;border: 2px solid rgb(0, 121, 191);}
+main .addBoardInputWrapper .addBoardControls{display: flex;align-items: center;padding-top: 4px;}
+main .addBoardInputWrapper .addBoardControls .addBtn{height: 32px;margin-top: 0;min-height: 32px;padding:4px 12px; background-color: #0079bf;color: #fff;border-radius: 3px;cursor: pointer;}
+main .addBoardInputWrapper .addBoardControls .closeBtn{color: #212121;font-size: 30px;padding-left: 5px;cursor: pointer;}
 main .boardArea .boardWrapper{display: inline-block;white-space: nowrap; width: 200px;height: 100%; font-weight: 400;font-size: 14px;background: transparent;border-radius: 3px;color: #fff;margin-right: 8px;vertical-align: top;}
 main .boardArea .boardWrapper .boardBox{width: 100%;background-color: #E3E4E6;border-radius: 5px;display: flex;flex-direction: column;max-height:100%;position: relative;}
 main .boardArea .boardWrapper .boardBox .boardTitleWrapper{display: block;}

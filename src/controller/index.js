@@ -4,13 +4,7 @@ export default class Controller {
   constructor(model) {
     this.model = model;
     this.BoardList = new BoardList();
-
-    this.addBarodBtn = $(".addBoardBtn");
     this.boardContainer = $(".boardContainer");
-    this.deleteBoardBtn = $(".boardDeleteBtn");
-    this.deletetodoBtn = $(".todoDeleteBtn");
-    this.todoTitle = $(".todoTitle");
-    this.todoBox = $(".todoBox");
 
     this.addBoard();
     this.addTodo();
@@ -26,16 +20,38 @@ export default class Controller {
   }
 
   addBoard() {
-    onClick(this.addBarodBtn, (e) => {
-      const title = prompt("추가할 Board를 입력하세요.", "내용");
-      if (title.length > 20) {
-        alert("Board 글자수가 20자를 넘어가면 안됩니다.");
-        return;
-      }
-      if (title) {
-        this.model.setBoardData({ id: createId(), title, todos: [] }, "boards");
-      }
+    onClick($(".addBoardBtn"), (e) => {
+      e.preventDefault();
+      e.target.classList.remove("on");
+      $(".addBoardInputWrapper").classList.add("on");
+      $(".addBoardInputWrapper input").focus();
+      // const title = prompt("추가할 Board를 입력하세요.", "내용");
+      // if (title.length > 20) {
+      //   alert("Board 글자수가 20자를 넘어가면 안됩니다.");
+      //   return;
+      // }
+      // if (title) {
+      //   this.model.setBoardData({ id: createId(), title, todos: [] }, "boards");
+      // }
       this.render();
+    });
+    onClick($(".addBoardControls"), (e) => {
+      e.preventDefault();
+
+      const inputClose = () => {
+        $(".addBoardInputWrapper").classList.remove("on");
+        $(".addBoardInputWrapper input").value = "";
+        $(".addBoardBtn").classList.add("on");
+        this.render();
+      };
+
+      if (e.target.classList.contains("closeBtn")) {
+        inputClose();
+      } else if (e.target.classList.contains("addBtn")) {
+        const title = $(".addBoardInputWrapper input").value;
+        this.model.setBoardData({ id: createId(), title, todos: [] }, "boards");
+        inputClose();
+      }
     });
   }
 

@@ -92,6 +92,22 @@ model
 현재 프로젝트에서 데이터 저장소는 로컬스토리지를 사용하고 있습니다.  
 Model에서는 데이터를 컨트롤하는 여러 메소드들을 포함하고 있습니다.
 
+```js
+export default class Model {
+  constructor() {
+    if (!this.getData()) {
+      localStorage.setItem("boards", "[]");
+    }
+  }
+  getData(key = "boards") {
+    const getData = JSON.parse(localStorage.getItem(key));
+    if (getData === null) false;
+    return getData;
+  }
+  ...
+}
+```
+
 - getData (전체 board 데이터 조회)
 - setBoardData (board 데이터 추가)
 - deleteBoardData (board 데이터 삭제)
